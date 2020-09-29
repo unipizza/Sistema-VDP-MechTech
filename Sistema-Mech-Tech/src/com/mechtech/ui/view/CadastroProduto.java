@@ -1,4 +1,4 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
 import com.mechtech.dao.ProdutoDAO;
 import com.mechtech.ui.tm.ProdutoTableModel;
@@ -52,7 +52,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
         barraFerramentas.setFloatable(false);
 
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-novo.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-novo.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.setFocusable(false);
         btNovo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -66,7 +66,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btNovo);
 
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.setFocusable(false);
         btSalvar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -80,7 +80,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btSalvar);
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-excluir.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-excluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.setFocusable(false);
         btExcluir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -94,7 +94,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btExcluir);
 
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-cancelar.png"))); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-cancelar.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.setFocusable(false);
         btCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

@@ -1,4 +1,4 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
 import com.mechtech.dao.FornecedorDAO;
 import com.mechtech.ui.tm.FornecedorTableModel;

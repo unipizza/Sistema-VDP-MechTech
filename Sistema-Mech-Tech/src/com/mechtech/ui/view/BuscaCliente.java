@@ -1,4 +1,4 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
 import com.mechtech.dao.ClienteDAO;
 import com.mechtech.ui.tm.ClienteTableModel;

@@ -1,4 +1,4 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
 /**
  * Janela menu da aplicação
@@ -39,13 +39,13 @@ public class Menu extends javax.swing.JFrame {
 
         toolBar.setFloatable(false);
 
-        btVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo_venda.png"))); // NOI18N
+        btVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo_venda.png"))); // NOI18N
         btVenda.setText("Venda");
         btVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btVenda.setFocusable(false);
         btVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btVenda.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btVenda.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo_venda_fundo.png"))); // NOI18N
+        btVenda.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo_venda_fundo.png"))); // NOI18N
         btVenda.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -55,13 +55,13 @@ public class Menu extends javax.swing.JFrame {
         });
         toolBar.add(btVenda);
 
-        btCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-compra.png"))); // NOI18N
+        btCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-compra.png"))); // NOI18N
         btCompra.setText("Compra");
         btCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCompra.setFocusable(false);
         btCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCompra.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btCompra.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-compra-foco.png"))); // NOI18N
+        btCompra.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-compra-foco.png"))); // NOI18N
         btCompra.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btCompra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -71,13 +71,13 @@ public class Menu extends javax.swing.JFrame {
         });
         toolBar.add(btCompra);
 
-        btProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-produto.png"))); // NOI18N
+        btProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-produto.png"))); // NOI18N
         btProduto.setText("Produto");
         btProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btProduto.setFocusable(false);
         btProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btProduto.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-produto-foco.png"))); // NOI18N
+        btProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-produto-foco.png"))); // NOI18N
         btProduto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,13 +86,13 @@ public class Menu extends javax.swing.JFrame {
         });
         toolBar.add(btProduto);
 
-        btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-cliente.png"))); // NOI18N
+        btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-cliente.png"))); // NOI18N
         btCliente.setText("Cliente");
         btCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btCliente.setFocusable(false);
         btCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCliente.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-cliente-foco.png"))); // NOI18N
+        btCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-cliente-foco.png"))); // NOI18N
         btCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,13 +101,13 @@ public class Menu extends javax.swing.JFrame {
         });
         toolBar.add(btCliente);
 
-        btFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-fornecedor.png"))); // NOI18N
+        btFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-fornecedor.png"))); // NOI18N
         btFornecedor.setText("Fornecedor");
         btFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btFornecedor.setFocusable(false);
         btFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btFornecedor.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btFornecedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-fornecedor-foco.png"))); // NOI18N
+        btFornecedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-fornecedor-foco.png"))); // NOI18N
         btFornecedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,13 +116,13 @@ public class Menu extends javax.swing.JFrame {
         });
         toolBar.add(btFornecedor);
 
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-sair.png"))); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-sair.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btSair.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        btSair.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-sair-foco.png"))); // NOI18N
+        btSair.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-sair-foco.png"))); // NOI18N
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

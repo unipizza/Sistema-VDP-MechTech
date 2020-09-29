@@ -1,28 +1,27 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
-import com.mechtech.dao.ProdutoDAO;
-import com.mechtech.dao.VendaDAO;
-import com.mechtech.ui.tm.ItemVendaTableModel;
-import com.mechtech.ui.tm.VendaTableModel;
-import com.mechtech.dto.Cliente;
-import com.mechtech.dto.ItemVenda;
+import com.mechtech.dao.CompraDAO;
+import com.mechtech.ui.tm.CompraTableModel;
+import com.mechtech.ui.tm.ItemCompraTableModel;
+import com.mechtech.dto.Compra;
+import com.mechtech.dto.Fornecedor;
+import com.mechtech.dto.ItemCompra;
 import com.mechtech.dto.Produto;
-import com.mechtech.dto.Venda;
 import com.mechtech.dto.enums.Situacao;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
- * Janela de lançamento de venda
+ * Janela de lançamento de compra
  *
  * @author Vinicius Bignardi
  */
-public class LancamentoVenda extends javax.swing.JInternalFrame {
+public class LancamentoCompra extends javax.swing.JInternalFrame {
 
-    private Venda venda = null;
-    private VendaDAO vendaDAO = new VendaDAO();
+    private Compra compra = null;
+    private CompraDAO compraDAO = new CompraDAO();
 
-    public LancamentoVenda() {
+    public LancamentoCompra() {
         initComponents();
         habilitarFormulario(false);
         carregarGrade();
@@ -43,13 +42,13 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         tpConteudo = new javax.swing.JTabbedPane();
         pnCabecalho = new javax.swing.JPanel();
         pnForm = new javax.swing.JPanel();
-        lbCliente = new javax.swing.JLabel();
+        lbFornecedor = new javax.swing.JLabel();
         lbValorTotal = new javax.swing.JLabel();
-        lbDataVenda = new javax.swing.JLabel();
-        ftfCliente = new javax.swing.JFormattedTextField();
-        btCliente = new javax.swing.JButton();
+        lbDataCompra = new javax.swing.JLabel();
+        ftfFornecedor = new javax.swing.JFormattedTextField();
+        btFornecedor = new javax.swing.JButton();
         ftfValorTotal = new javax.swing.JFormattedTextField();
-        ftfDataVenda = new javax.swing.JFormattedTextField();
+        ftfDataCompra = new javax.swing.JFormattedTextField();
         spGrade = new javax.swing.JScrollPane();
         tbGrade = new javax.swing.JTable();
         pnItens = new javax.swing.JPanel();
@@ -87,7 +86,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
 
         barraFerramentas.setFloatable(false);
 
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-novo-foco.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-novo.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.setFocusable(false);
         btNovo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -101,7 +100,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btNovo);
 
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.setFocusable(false);
         btSalvar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -115,7 +114,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btSalvar);
 
-        btFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-finalizar.png"))); // NOI18N
+        btFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-finalizar-foco.png"))); // NOI18N
         btFinalizar.setText("Finalizar");
         btFinalizar.setFocusable(false);
         btFinalizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -129,7 +128,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btFinalizar);
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-excluir.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-excluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.setFocusable(false);
         btExcluir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -143,7 +142,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btExcluir);
 
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-excluir.png"))); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-cancelar.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.setFocusable(false);
         btCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -168,11 +167,11 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         pnForm.setOpaque(false);
         pnForm.setLayout(new java.awt.GridBagLayout());
 
-        lbCliente.setText("Cliente:");
+        lbFornecedor.setText("Fornecedor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(lbCliente, gridBagConstraints);
+        pnForm.add(lbFornecedor, gridBagConstraints);
 
         lbValorTotal.setText("Valor Total:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -182,32 +181,32 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbValorTotal, gridBagConstraints);
 
-        lbDataVenda.setText("Data Venda:");
+        lbDataCompra.setText("Data Compra:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(lbDataVenda, gridBagConstraints);
+        pnForm.add(lbDataCompra, gridBagConstraints);
 
-        ftfCliente.setEditable(false);
-        ftfCliente.setColumns(25);
+        ftfFornecedor.setEditable(false);
+        ftfFornecedor.setColumns(25);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfCliente, gridBagConstraints);
+        pnForm.add(ftfFornecedor, gridBagConstraints);
 
-        btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jdenner/gui/img/buscar.png"))); // NOI18N
-        btCliente.setToolTipText("Localizar cliente");
-        btCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btCliente.setPreferredSize(new java.awt.Dimension(21, 21));
-        btCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jdenner/gui/img/buscar-foco.png"))); // NOI18N
-        btCliente.addActionListener(new java.awt.event.ActionListener() {
+        btFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jdenner/gui/img/buscar.png"))); // NOI18N
+        btFornecedor.setToolTipText("Localizar cliente");
+        btFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btFornecedor.setPreferredSize(new java.awt.Dimension(21, 21));
+        btFornecedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jdenner/gui/img/buscar-foco.png"))); // NOI18N
+        btFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btClienteActionPerformed(evt);
+                btFornecedorActionPerformed(evt);
             }
         });
-        pnForm.add(btCliente, new java.awt.GridBagConstraints());
+        pnForm.add(btFornecedor, new java.awt.GridBagConstraints());
 
         ftfValorTotal.setEditable(false);
         ftfValorTotal.setColumns(10);
@@ -220,20 +219,20 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(ftfValorTotal, gridBagConstraints);
 
-        ftfDataVenda.setEditable(false);
-        ftfDataVenda.setColumns(10);
-        ftfDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        ftfDataVenda.setValue(new Date());
+        ftfDataCompra.setEditable(false);
+        ftfDataCompra.setColumns(10);
+        ftfDataCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        ftfDataCompra.setValue(new Date());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfDataVenda, gridBagConstraints);
+        pnForm.add(ftfDataCompra, gridBagConstraints);
 
         pnCabecalho.add(pnForm, java.awt.BorderLayout.PAGE_START);
 
-        tbGrade.setModel(new VendaTableModel());
+        tbGrade.setModel(new CompraTableModel());
         tbGrade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbGradeMouseClicked(evt);
@@ -243,7 +242,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
 
         pnCabecalho.add(spGrade, java.awt.BorderLayout.CENTER);
 
-        tpConteudo.addTab("Dados da venda", pnCabecalho);
+        tpConteudo.addTab("Dados da compra", pnCabecalho);
 
         pnItens.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 10, 10));
         pnItens.setLayout(new java.awt.BorderLayout());
@@ -313,7 +312,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnFormItens.add(spQuantidade, gridBagConstraints);
 
-        btAdicionarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-novo.png"))); // NOI18N
+        btAdicionarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-novo.png"))); // NOI18N
         btAdicionarItem.setToolTipText("Adicionar item");
         btAdicionarItem.setPreferredSize(new java.awt.Dimension(35, 30));
         btAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
@@ -327,7 +326,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         pnFormItens.add(btAdicionarItem, gridBagConstraints);
 
-        btRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-excluir.png"))); // NOI18N
+        btRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-excluir.png"))); // NOI18N
         btRemoverItem.setToolTipText("Remover item");
         btRemoverItem.setPreferredSize(new java.awt.Dimension(35, 30));
         btRemoverItem.addActionListener(new java.awt.event.ActionListener() {
@@ -342,12 +341,12 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
 
         pnItens.add(pnFormItens, java.awt.BorderLayout.PAGE_START);
 
-        tbGradeItens.setModel(new ItemVendaTableModel());
+        tbGradeItens.setModel(new ItemCompraTableModel());
         spGradeItens.setViewportView(tbGradeItens);
 
         pnItens.add(spGradeItens, java.awt.BorderLayout.CENTER);
 
-        tpConteudo.addTab("Itens da venda", pnItens);
+        tpConteudo.addTab("Itens da compra", pnItens);
 
         getContentPane().add(tpConteudo, java.awt.BorderLayout.CENTER);
 
@@ -355,7 +354,7 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        venda = new Venda();
+        compra = new Compra();
         habilitarFormulario(true);
     }//GEN-LAST:event_btNovoActionPerformed
 
@@ -367,10 +366,10 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         habilitarFormulario(false);
     }//GEN-LAST:event_btCancelarActionPerformed
 
-    private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
-        BuscaCliente buscaCliente = new BuscaCliente(this);
-        buscaCliente.setVisible(true);
-    }//GEN-LAST:event_btClienteActionPerformed
+    private void btFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFornecedorActionPerformed
+        BuscaFornecedor buscaFornecedor = new BuscaFornecedor(this);
+        buscaFornecedor.setVisible(true);
+    }//GEN-LAST:event_btFornecedorActionPerformed
 
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
         BuscaProduto buscaProduto = new BuscaProduto(this);
@@ -379,18 +378,18 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
 
     private void btAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarItemActionPerformed
         if (validarFormularioItens()) {
-            ItemVenda iv = new ItemVenda();
+            ItemCompra iv = new ItemCompra();
             iv.setProduto((Produto) ftfProduto.getValue());
-            iv.setVenda(venda);
+            iv.setCompra(compra);
             iv.setQuantidade((int) spQuantidade.getValue());
             iv.setValorUnitario((Double) ftfValorUnitario.getValue());
 
-            venda.addItem(iv);
+            compra.addItem(iv);
 
-            ItemVendaTableModel ivtm = (ItemVendaTableModel) tbGradeItens.getModel();
-            ivtm.setDados(venda.getItens());
+            ItemCompraTableModel ivtm = (ItemCompraTableModel) tbGradeItens.getModel();
+            ivtm.setDados(compra.getItens());
 
-            ftfValorTotal.setValue(venda.getValorTotal());
+            ftfValorTotal.setValue(compra.getValorTotal());
 
             limpaFormularioItens();
         }
@@ -399,12 +398,12 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     private void btRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverItemActionPerformed
         if (tbGradeItens.getSelectedRowCount() > 0) {
             int linhaSelecionada = tbGradeItens.getSelectedRow();
-            ItemVendaTableModel ivtm = (ItemVendaTableModel) tbGradeItens.getModel();
-            ItemVenda iv = ivtm.getRowValue(linhaSelecionada);
+            ItemCompraTableModel ivtm = (ItemCompraTableModel) tbGradeItens.getModel();
+            ItemCompra iv = ivtm.getRowValue(linhaSelecionada);
 
             if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o item " + iv + "?", "Confirmação", JOptionPane.YES_NO_OPTION) == 0) {
-                venda.removeItem(iv);
-                ivtm.setDados(venda.getItens());
+                compra.removeItem(iv);
+                ivtm.setDados(compra.getItens());
             }
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha para remover.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -414,55 +413,43 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     private void tbGradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGradeMouseClicked
         if (evt.getClickCount() == 2) {
             int linhaSelecionada = tbGrade.getSelectedRow();
-            VendaTableModel vtm = (VendaTableModel) tbGrade.getModel();
-            venda = vtm.getRowValue(linhaSelecionada);
+            CompraTableModel vtm = (CompraTableModel) tbGrade.getModel();
+            compra = vtm.getRowValue(linhaSelecionada);
 
-            if (venda.getSituacao() == Situacao.FINALIZADA) {
-                JOptionPane.showMessageDialog(this, "Venda finalizada não pode ser alterada.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            if (compra.getSituacao() == Situacao.FINALIZADA) {
+                JOptionPane.showMessageDialog(this, "Compra finalizada não pode ser alterada.", "Alerta", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            if (venda.getSituacao() == Situacao.CANCELADA) {
-                JOptionPane.showMessageDialog(this, "Venda cancelada não pode ser alterada.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            if (compra.getSituacao() == Situacao.CANCELADA) {
+                JOptionPane.showMessageDialog(this, "Compra cancelada não pode ser alterada.", "Alerta", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            ftfCliente.setValue(venda.getCliente());
-            ftfDataVenda.setValue(venda.getDataVenda());
-            ftfValorTotal.setValue(venda.getValorTotal());
+            ftfFornecedor.setValue(compra.getFornecedor());
+            ftfDataCompra.setValue(compra.getDataCompra());
+            ftfValorTotal.setValue(compra.getValorTotal());
 
-            ItemVendaTableModel ivtm = (ItemVendaTableModel) tbGradeItens.getModel();
-            ivtm.setDados(venda.getItens());
+            ItemCompraTableModel ivtm = (ItemCompraTableModel) tbGradeItens.getModel();
+            ivtm.setDados(compra.getItens());
 
             habilitarFormulario(true);
         }
     }//GEN-LAST:event_tbGradeMouseClicked
 
     private void btFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente finalizar a venda?");
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente finalizar a compra?");
         if (opcao == 0) {
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            for (ItemVenda iv : venda.getItens()) {
-                try {
-                    if (iv.getQuantidade() > produtoDAO.recuperar(iv.getProduto().getCodigo()).getQuantidade()) {
-                        JOptionPane.showMessageDialog(this, "Impossível finalizar.\nProduto " + iv.getProduto() + " em falta no estoque.", "Alerta", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao consultar o estoque.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
             salvar(true);
         }
     }//GEN-LAST:event_btFinalizarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente cancelar a venda " + venda + "?");
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente cancelar a compra " + compra + "?");
         if (opcao == 0) {
             try {
-                vendaDAO.excluir(venda);
+                compraDAO.excluir(compra);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Erro ao excluir a venda.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erro ao excluir a compra.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -471,13 +458,13 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
-    public void setCliente(Cliente cliente) {
-        ftfCliente.setValue(cliente);
+    public void setFornecedor(Fornecedor cliente) {
+        ftfFornecedor.setValue(cliente);
     }
 
     public void setProduto(Produto produto) {
         ftfProduto.setValue(produto);
-        ftfValorUnitario.setValue(produto.getPrecoVenda());
+        ftfValorUnitario.setValue(produto.getPrecoCompra());
     }
 
     private void habilitarFormulario(boolean ativo) {
@@ -486,9 +473,9 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
         btFinalizar.setEnabled(ativo);
         btExcluir.setEnabled(ativo);
         btCancelar.setEnabled(ativo);
-        ftfCliente.setEnabled(ativo);
-        btCliente.setEnabled(ativo);
-        ftfDataVenda.setEnabled(ativo);
+        ftfFornecedor.setEnabled(ativo);
+        btFornecedor.setEnabled(ativo);
+        ftfDataCompra.setEnabled(ativo);
         ftfValorTotal.setEnabled(ativo);
         ftfProduto.setEnabled(ativo);
         btProduto.setEnabled(ativo);
@@ -504,14 +491,14 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     }
 
     private void limpaFormulario() {
-        venda = null;
-        ftfCliente.setValue(null);
-        ftfDataVenda.setValue(new Date());
+        compra = null;
+        ftfFornecedor.setValue(null);
+        ftfDataCompra.setValue(new Date());
         ftfValorTotal.setValue(new Double(0));
         ftfProduto.setValue(null);
         spQuantidade.setValue(1);
         ftfValorUnitario.setValue(new Double(0));
-        tbGradeItens.setModel(new ItemVendaTableModel());
+        tbGradeItens.setModel(new ItemCompraTableModel());
         limpaFormularioItens();
     }
 
@@ -522,12 +509,12 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     }
 
     private boolean validarFormulario() {
-        if (ftfCliente.getValue() == null) {
-            JOptionPane.showMessageDialog(this, "Cliente inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
-            ftfCliente.requestFocus();
+        if (ftfFornecedor.getValue() == null) {
+            JOptionPane.showMessageDialog(this, "Fornecedor inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            ftfFornecedor.requestFocus();
             return false;
         }
-        if (venda.quantidadeItens() == 0) {
+        if (compra.quantidadeItens() == 0) {
             JOptionPane.showMessageDialog(this, "Quantidade de itens inválida.", "Alerta", JOptionPane.WARNING_MESSAGE);
             tpConteudo.setSelectedIndex(1);
             return false;
@@ -545,9 +532,9 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     }
 
     private void carregarGrade() {
-        VendaTableModel tm = (VendaTableModel) tbGrade.getModel();
+        CompraTableModel tm = (CompraTableModel) tbGrade.getModel();
         try {
-            tm.setDados(vendaDAO.listarTodos());
+            tm.setDados(compraDAO.listarTodos());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar grade.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -555,26 +542,26 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
 
     private void salvar(boolean finalizar) {
         if (validarFormulario()) {
-            venda.setCliente((Cliente) ftfCliente.getValue());
-            venda.setDataVenda((Date) ftfDataVenda.getValue());
+            compra.setFornecedor((Fornecedor) ftfFornecedor.getValue());
+            compra.setDataCompra((Date) ftfDataCompra.getValue());
             if (finalizar) {
-                venda.setSituacao(Situacao.FINALIZADA);
+                compra.setSituacao(Situacao.FINALIZADA);
             } else {
-                venda.setSituacao(Situacao.ABERTA);
+                compra.setSituacao(Situacao.ABERTA);
             }
 
-            if (venda.getCodigo() == 0) {
+            if (compra.getCodigo() == 0) {
                 try {
-                    vendaDAO.inserir(venda);
+                    compraDAO.inserir(compra);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao inserir a venda.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erro ao inserir a compra.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } else {
                 try {
-                    vendaDAO.alterar(venda);
+                    compraDAO.alterar(compra);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao alterar a venda.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erro ao alterar a compra.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -588,21 +575,21 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     private javax.swing.JToolBar barraFerramentas;
     private javax.swing.JButton btAdicionarItem;
     private javax.swing.JButton btCancelar;
-    private javax.swing.JButton btCliente;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btFinalizar;
+    private javax.swing.JButton btFornecedor;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btProduto;
     private javax.swing.JButton btRemoverItem;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JFormattedTextField ftfCliente;
-    private javax.swing.JFormattedTextField ftfDataVenda;
+    private javax.swing.JFormattedTextField ftfDataCompra;
+    private javax.swing.JFormattedTextField ftfFornecedor;
     private javax.swing.JFormattedTextField ftfProduto;
     private javax.swing.JFormattedTextField ftfValorTotal;
     private javax.swing.JFormattedTextField ftfValorUnitario;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbCliente;
-    private javax.swing.JLabel lbDataVenda;
+    private javax.swing.JLabel lbDataCompra;
+    private javax.swing.JLabel lbFornecedor;
     private javax.swing.JLabel lbProduto;
     private javax.swing.JLabel lbQuantidade;
     private javax.swing.JLabel lbValorTotal;
@@ -619,4 +606,5 @@ public class LancamentoVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbGradeItens;
     private javax.swing.JTabbedPane tpConteudo;
     // End of variables declaration//GEN-END:variables
+
 }

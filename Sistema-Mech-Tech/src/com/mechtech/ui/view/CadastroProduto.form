@@ -57,7 +57,7 @@
             <Component class="javax.swing.JButton" name="btNovo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/mechtech/gui/img/novo-novo.png"/>
+                  <Image iconType="3" name="/com/mechtech/ui/view/img/novo-novo.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Novo"/>
                 <Property name="focusable" type="boolean" value="false"/>
@@ -75,7 +75,7 @@
             <Component class="javax.swing.JButton" name="btSalvar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/mechtech/gui/img/novo-salvar.png"/>
+                  <Image iconType="3" name="/com/mechtech/ui/view/img/novo-salvar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
                 <Property name="focusable" type="boolean" value="false"/>
@@ -93,7 +93,7 @@
             <Component class="javax.swing.JButton" name="btExcluir">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/mechtech/gui/img/novo-excluir.png"/>
+                  <Image iconType="3" name="/com/mechtech/ui/view/img/novo-excluir.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
                 <Property name="focusable" type="boolean" value="false"/>
@@ -111,7 +111,7 @@
             <Component class="javax.swing.JButton" name="btCancelar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/mechtech/gui/img/novo-cancelar.png"/>
+                  <Image iconType="3" name="/com/mechtech/ui/view/img/novo-cancelar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
                 <Property name="focusable" type="boolean" value="false"/>

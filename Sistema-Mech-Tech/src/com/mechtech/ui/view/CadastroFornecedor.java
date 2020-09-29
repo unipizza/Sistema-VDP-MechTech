@@ -1,22 +1,21 @@
-package com.mechtech.gui;
+package com.mechtech.ui.view;
 
-import com.mechtech.dao.ClienteDAO;
-import com.mechtech.ui.tm.ClienteTableModel;
-import com.mechtech.dto.Cliente;
-import java.util.Date;
+import com.mechtech.dao.FornecedorDAO;
+import com.mechtech.ui.tm.FornecedorTableModel;
+import com.mechtech.dto.Fornecedor;
 import javax.swing.JOptionPane;
 
 /**
- * Janela de cadastro de cliente
+ * Janela de cadastro de fornecedor
  *
  * @author Vinicius Bignardi
  */
-public class CadastroCliente extends javax.swing.JInternalFrame {
+public class CadastroFornecedor extends javax.swing.JInternalFrame {
 
-    private Cliente cliente = null;
-    private ClienteDAO clienteDAO = new ClienteDAO();
+    private Fornecedor fornecedor = null;
+    private FornecedorDAO fornecedorDAO = new FornecedorDAO();
 
-    public CadastroCliente() {
+    public CadastroFornecedor() {
         initComponents();
         habilitarFormulario(false);
         carregarGrade();
@@ -35,11 +34,9 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         pnConteudo = new javax.swing.JPanel();
         pnForm = new javax.swing.JPanel();
         lbNome = new javax.swing.JLabel();
-        lbCpf = new javax.swing.JLabel();
-        lbDataNascimento = new javax.swing.JLabel();
+        lbCnpj = new javax.swing.JLabel();
         ftfNome = new javax.swing.JFormattedTextField();
-        ftfCpf = new javax.swing.JFormattedTextField();
-        ftfDataNascimento = new javax.swing.JFormattedTextField();
+        ftfCnpj = new javax.swing.JFormattedTextField();
         spGrade = new javax.swing.JScrollPane();
         tbGrade = new javax.swing.JTable();
 
@@ -53,7 +50,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
         barraFerramentas.setFloatable(false);
 
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-novo.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-novo-foco.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.setFocusable(false);
         btNovo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -67,7 +64,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btNovo);
 
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.setFocusable(false);
         btSalvar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -81,7 +78,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btSalvar);
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-excluir.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-excluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.setFocusable(false);
         btExcluir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -95,7 +92,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         });
         barraFerramentas.add(btExcluir);
 
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/gui/img/novo-cancelar.png"))); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mechtech/ui/view/img/novo-cancelar.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.setFocusable(false);
         btCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -126,21 +123,13 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbNome, gridBagConstraints);
 
-        lbCpf.setText("CPF:");
+        lbCnpj.setText("CNPJ:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(lbCpf, gridBagConstraints);
-
-        lbDataNascimento.setText("Data Nascimento:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(lbDataNascimento, gridBagConstraints);
+        pnForm.add(lbCnpj, gridBagConstraints);
 
         ftfNome.setColumns(25);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -148,34 +137,24 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(ftfNome, gridBagConstraints);
 
-        ftfCpf.setColumns(10);
+        ftfCnpj.setColumns(13);
         try {
-            ftfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            ftfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftfCpf.setValue(new String());
+        ftfCnpj.setValue(new String());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfCpf, gridBagConstraints);
-
-        ftfDataNascimento.setColumns(10);
-        ftfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        ftfDataNascimento.setValue(new Date());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfDataNascimento, gridBagConstraints);
+        pnForm.add(ftfCnpj, gridBagConstraints);
 
         pnConteudo.add(pnForm, java.awt.BorderLayout.PAGE_START);
 
         tbGrade.setAutoCreateRowSorter(true);
-        tbGrade.setModel(new ClienteTableModel());
+        tbGrade.setModel(new FornecedorTableModel());
         tbGrade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbGradeMouseClicked(evt);
@@ -191,29 +170,28 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        cliente = new Cliente();
+        fornecedor = new Fornecedor();
         habilitarFormulario(true);
         btExcluir.setEnabled(false);
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         if (validarFormulario()) {
-            cliente.setNome(ftfNome.getText().trim());
-            cliente.setCpf((String) ftfCpf.getValue());
-            cliente.setDataNascimento((Date) ftfDataNascimento.getValue());
+            fornecedor.setNome(ftfNome.getText().trim());
+            fornecedor.setCnpj((String) ftfCnpj.getValue());
 
-            if (cliente.getCodigo() == 0) {
+            if (fornecedor.getCodigo() == 0) {
                 try {
-                    clienteDAO.inserir(cliente);
+                    fornecedorDAO.inserir(fornecedor);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao inserir o cliente.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erro ao inserir o fornecedor.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } else {
                 try {
-                    clienteDAO.alterar(cliente);
+                    fornecedorDAO.alterar(fornecedor);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao alterar o cliente.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Erro ao alterar o fornecedor.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -224,12 +202,12 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o cliente " + cliente + "?");
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o fornecedor " + fornecedor + "?");
         if (opcao == 0) {
             try {
-                clienteDAO.excluir(cliente);
+                fornecedorDAO.excluir(fornecedor);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Erro ao excluir o cliente.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o fornecedor.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -244,12 +222,11 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     private void tbGradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGradeMouseClicked
         if (evt.getClickCount() == 2) {
-            ClienteTableModel tm = (ClienteTableModel) tbGrade.getModel();
-            cliente = tm.getRowValue(tbGrade.getRowSorter().convertRowIndexToModel(tbGrade.getSelectedRow()));
+            FornecedorTableModel tm = (FornecedorTableModel) tbGrade.getModel();
+            fornecedor = tm.getRowValue(tbGrade.getRowSorter().convertRowIndexToModel(tbGrade.getSelectedRow()));
 
-            ftfNome.setValue(cliente.getNome());
-            ftfCpf.setValue(cliente.getCpf());
-            ftfDataNascimento.setValue(cliente.getDataNascimento());
+            ftfNome.setValue(fornecedor.getNome());
+            ftfCnpj.setValue(fornecedor.getCnpj());
 
             habilitarFormulario(true);
         }
@@ -261,8 +238,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         btExcluir.setEnabled(ativo);
         btCancelar.setEnabled(ativo);
         ftfNome.setEnabled(ativo);
-        ftfCpf.setEnabled(ativo);
-        ftfDataNascimento.setEnabled(ativo);
+        ftfCnpj.setEnabled(ativo);
         tbGrade.setEnabled(!ativo);
 
         if (!ativo) {
@@ -271,10 +247,9 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }
 
     private void limpaFormulario() {
-        cliente = null;
+        fornecedor = null;
         ftfNome.setValue("");
-        ftfCpf.setValue("");
-        ftfDataNascimento.setValue(new Date());
+        ftfCnpj.setValue("");
     }
 
     private boolean validarFormulario() {
@@ -283,23 +258,18 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             ftfNome.requestFocus();
             return false;
         }
-        if (ftfCpf.getText().trim().length() != 14) {
-            JOptionPane.showMessageDialog(this, "CPF inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
-            ftfCpf.requestFocus();
-            return false;
-        }
-        if (((Date) ftfDataNascimento.getValue()).after(new Date())) {
-            JOptionPane.showMessageDialog(this, "Data de nascimento inválida.", "Alerta", JOptionPane.WARNING_MESSAGE);
-            ftfDataNascimento.requestFocus();
+        if (ftfCnpj.getText().trim().length() != 18) {
+            JOptionPane.showMessageDialog(this, "CNPJ inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            ftfCnpj.requestFocus();
             return false;
         }
         return true;
     }
 
     private void carregarGrade() {
-        ClienteTableModel tm = (ClienteTableModel) tbGrade.getModel();
+        FornecedorTableModel tm = (FornecedorTableModel) tbGrade.getModel();
         try {
-            tm.setDados(clienteDAO.listarTodos());
+            tm.setDados(fornecedorDAO.listarTodos());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar grade.\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -310,11 +280,9 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JFormattedTextField ftfCpf;
-    private javax.swing.JFormattedTextField ftfDataNascimento;
+    private javax.swing.JFormattedTextField ftfCnpj;
     private javax.swing.JFormattedTextField ftfNome;
-    private javax.swing.JLabel lbCpf;
-    private javax.swing.JLabel lbDataNascimento;
+    private javax.swing.JLabel lbCnpj;
     private javax.swing.JLabel lbNome;
     private javax.swing.JPanel pnBarraFerramentas;
     private javax.swing.JPanel pnConteudo;

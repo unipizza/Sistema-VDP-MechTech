@@ -145,7 +145,7 @@
         <Component class="javax.swing.JButton" name="btVenda">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo_venda.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo_venda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Venda"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -157,7 +157,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo_venda_fundo.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo_venda_fundo.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="3"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -169,7 +169,7 @@
         <Component class="javax.swing.JButton" name="btCompra">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-compra.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-compra.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Compra"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -181,7 +181,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-compra-foco.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-compra-foco.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="3"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -193,7 +193,7 @@
         <Component class="javax.swing.JButton" name="btProduto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-produto.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-produto.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -205,7 +205,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-produto-foco.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-produto-foco.png"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -216,7 +216,7 @@
         <Component class="javax.swing.JButton" name="btCliente">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-cliente.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-cliente.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -228,7 +228,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-cliente-foco.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-cliente-foco.png"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -239,7 +239,7 @@
         <Component class="javax.swing.JButton" name="btFornecedor">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-fornecedor.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-fornecedor.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fornecedor"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -251,7 +251,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-fornecedor-foco.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-fornecedor-foco.png"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -262,7 +262,7 @@
         <Component class="javax.swing.JButton" name="btSair">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-sair.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-sair.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -274,7 +274,7 @@
               <Insets value="[2, 12, 2, 12]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/mechtech/gui/img/novo-sair-foco.png"/>
+              <Image iconType="3" name="/com/mechtech/ui/view/img/novo-sair-foco.png"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>

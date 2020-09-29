@@ -1,6 +1,6 @@
 package com.mechtech;
 
-import com.mechtech.gui.Menu;
+import com.mechtech.ui.view.Menu;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
